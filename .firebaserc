@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "homerecipes-5f357": {
+      "hosting": {
+        "recipes": [
+          "homerecipes-5f357"
+        ]
+      }
+    }
+  }
+}

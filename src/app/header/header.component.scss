@@ -1,0 +1,26 @@
+.logo {
+  a {
+    text-decoration: none;
+    color: #d9fd6a;
+    transition: color ease-in-out 0.2s;
+    &:hover {
+      color: #c1ff00;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  a {
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color ease-in-out 0.2s;
+    &:hover {
+      color: #d3d0d3;
+    }
+  }
+}
