@@ -1,8 +1,12 @@
+<app-header (openSidenav)="sidenav.toggle()"></app-header>
+
 <mat-sidenav-container>
-  <mat-sidenav>
-    <app-sidenav></app-sidenav>
+  <mat-sidenav role="navigation" #sidenav [fixedTopGap]="20">
+    <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
