@@ -1,9 +1,15 @@
 <mat-nav-list>
-  <a mat-list-item routerLink="/" (click)="sidenavClose()"
+  <a mat-list-item routerLink="/login" (click)="sidenavClose()"
     >Войти
     <mat-icon>login</mat-icon>
   </a>
-  <a mat-list-item routerLink="/">Рецепты</a>
-  <a mat-list-item routerLink="/">Список покупок</a>
-  <a mat-list-item routerLink="/">Выйти</a>
+  <a mat-list-item routerLink="/recipes"
+    >Рецепты
+    <mat-icon>outdoor_grill</mat-icon>
+  </a>
+  <a mat-list-item routerLink="/shopping-list"
+    >Список покупок
+    <mat-icon>format_list_bulleted</mat-icon>
+  </a>
+  <a mat-list-item routerLink="/logout">Выйти <mat-icon>logout</mat-icon></a>
 </mat-nav-list>

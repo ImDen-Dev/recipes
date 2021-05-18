@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <div class="">
+  <div class="" fxHide fxShow.lt-md>
     <button mat-icon-button (click)="sidenavOpen()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -7,7 +7,7 @@
   <div class="logo">
     <a routerLink="/">HomeRecipes</a>
   </div>
-  <div class="" fxFlex fxLayout fxLayoutAlign="flex-end">
+  <div class="" fxFlex fxLayout fxLayoutAlign="flex-end" fxShow fxHide.lt-md>
     <ul fxLayout fxLayoutGap="10px">
       <li><a routerLink="/">Войти</a></li>
       <li><a routerLink="/">Рецепты</a></li>
