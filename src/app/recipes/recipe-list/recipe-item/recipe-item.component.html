@@ -1,34 +1,26 @@
 <mat-card class="recipe-card">
   <mat-card-header>
-    <mat-card-title>Recipe Name</mat-card-title>
+    <mat-card-title>{{ recipe.name }}</mat-card-title>
   </mat-card-header>
   <img
+    *ngIf="recipe.images.length > 0"
     mat-card-image
-    src="https://e2.edimdoma.ru/data/posts/0002/3033/23033-ed4_wide.jpg?1571234122"
-    alt=""
+    [src]="recipe.images[0]"
+    [alt]="recipe.name"
   />
   <mat-card-content>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci
-      assumenda at aut culpa distinctio dolore, hic iusto laudantium minima nemo
-      nisi officiis pariatur quasi quod, quos, suscipit! Dignissimos, obcaecati!
-    </p>
-  </mat-card-content>
-  <mat-card-footer>
     <ul
       class="recipe-ingredients"
       fxLayout="row wrap"
       fxLayoutGap="10px"
       fxLayoutAlign="flex-start"
     >
-      <li class="recipe-ingredient">Картоха</li>
-      <li class="recipe-ingredient">морковка</li>
-      <li class="recipe-ingredient">Свекла</li>
-      <li class="recipe-ingredient">Цибуля</li>
-      <li class="recipe-ingredient">Хлеб</li>
-      <li class="recipe-ingredient">Хлеб</li>
-      <li class="recipe-ingredient">Хлеб</li>
-      <li class="recipe-ingredient">Хлеб</li>
+      <li
+        class="recipe-ingredient"
+        *ngFor="let ingredient of recipe.ingredients"
+      >
+        {{ ingredient.name }}
+      </li>
     </ul>
-  </mat-card-footer>
+  </mat-card-content>
 </mat-card>

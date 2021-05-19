@@ -1,13 +1,10 @@
-mat-sidenav,
-mat-sidenav-container,
-mat-sidenav-content {
-  height: 100%;
-}
-
 mat-sidenav {
   width: 250px;
 }
 
 main {
-  margin-top: 15px;
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
