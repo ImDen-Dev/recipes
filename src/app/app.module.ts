@@ -14,6 +14,9 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { NgxsModule } from '@ngxs/store';
+import { RecipesState } from './recipes/recipes.state';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, SidenavComponent],
@@ -25,6 +28,10 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MaterialModule,
     FlexLayoutModule,
     RecipesModule,
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production,
+    }),
+    NgxsLoggerPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

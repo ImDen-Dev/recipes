@@ -6,6 +6,8 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { SharedModule } from '../shared/shared.module';
+import { NgxsModule } from '@ngxs/store';
+import { RecipesState } from './recipes.state';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,11 @@ import { SharedModule } from '../shared/shared.module';
     RecipeDetailComponent,
     RecipeItemComponent,
   ],
-  imports: [SharedModule, RecipesRoutingModule],
-  exports: [SharedModule, RecipesRoutingModule],
+  imports: [
+    SharedModule,
+    RecipesRoutingModule,
+    NgxsModule.forFeature([RecipesState]),
+  ],
+  exports: [],
 })
 export class RecipesModule {}

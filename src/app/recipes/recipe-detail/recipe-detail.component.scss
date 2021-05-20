@@ -1,0 +1,63 @@
+.recipe {
+  &_description,
+  &_img {
+    width: 100%;
+    max-width: 700px;
+  }
+  &_img {
+    & img {
+      width: 100%;
+    }
+  }
+  &_timer {
+    margin-bottom: 15px;
+    & p {
+      margin: 0 0 0 7px;
+    }
+  }
+  &_ingredients {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin-bottom: 25px;
+    & ol {
+      margin: 0;
+      padding: 0;
+      & li {
+        position: relative;
+        margin-bottom: 12px;
+        &:after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          content: "";
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: #fff;
+        }
+        & span,
+        p {
+          margin-bottom: 7px;
+        }
+      }
+    }
+  }
+
+  &_step {
+    margin-bottom: 20px;
+    &-img {
+      width: 100%;
+      max-width: 300px;
+
+      & img {
+        width: 100%;
+      }
+    }
+    & p {
+      padding: 0 20px 0 20px;
+    }
+  }
+}

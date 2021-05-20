@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/firestore';
 
 import { Recipe } from '../recipe.model';
+import { Select, Store } from '@ngxs/store';
+import { RecipesState } from '../recipes.state';
+import * as RecipesActions from '../recipes.actions';
 
 @Component({
   selector: 'app-recipe-list',
@@ -14,20 +12,12 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.scss'],
 })
 export class RecipeListComponent implements OnInit {
-  private recipeCollection!: AngularFirestoreCollection<Recipe>;
-  recipes!: Observable<Recipe[]>;
-  constructor(private fb: AngularFirestore) {}
+  @Select(RecipesState.fetchAllRecipes) recipes$:
+    | Observable<Recipe[]>
+    | undefined;
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.recipeCollection = this.fb.collection<Recipe>('recipes');
-    this.recipes = this.recipeCollection.snapshotChanges().pipe(
-      map((recipes) =>
-        recipes.map((recipe) => {
-          const data = recipe.payload.doc.data() as Recipe;
-          const id = recipe.payload.doc.id;
-          return { id, ...data };
-        })
-      )
-    );
+    this.store.dispatch(new RecipesActions.FetchAllRecipes());
   }
 }
