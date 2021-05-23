@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
 import { Recipe } from '../recipe.model';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { RecipeService } from '../recipe.service';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,7 +10,31 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./recipe-detail.component.scss'],
 })
 export class RecipeDetailComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private fb: AngularFirestore) {}
+  recipe!: Recipe;
+  recipeId = '';
 
-  ngOnInit(): void {}
+  constructor(private route: ActivatedRoute, private rs: RecipeService) {}
+
+  ngOnInit(): void {
+    /*    this.route.params.subscribe((params) => {
+      this.rs.getRecipeById(params.id).subscribe((recipe) => {
+        if (recipe.exists) {
+          this.recipe = {...recipe.data(), id: }
+        }
+      });
+    });*/
+
+    this.route.params
+      .pipe(
+        switchMap((params) => {
+          this.recipeId = params.id;
+          return this.rs.getRecipeById(params.id);
+        })
+      )
+      .subscribe((doc) => {
+        if (doc.exists) {
+          this.recipe = doc.data();
+        }
+      });
+  }
 }

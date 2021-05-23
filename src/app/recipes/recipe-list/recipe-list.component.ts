@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
-import { Select, Store } from '@ngxs/store';
-import { RecipesState } from '../recipes.state';
-import * as RecipesActions from '../recipes.actions';
 
 @Component({
   selector: 'app-recipe-list',
@@ -12,12 +8,12 @@ import * as RecipesActions from '../recipes.actions';
   styleUrls: ['./recipe-list.component.scss'],
 })
 export class RecipeListComponent implements OnInit {
-  @Select(RecipesState.fetchAllRecipes) recipes$:
-    | Observable<Recipe[]>
-    | undefined;
-  constructor(private store: Store) {}
+  recipes: Recipe[] = [];
+  constructor(private rs: RecipeService) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new RecipesActions.FetchAllRecipes());
+    this.rs.fetchAllRecipes().subscribe((recipes) => {
+      this.recipes = recipes;
+    });
   }
 }
