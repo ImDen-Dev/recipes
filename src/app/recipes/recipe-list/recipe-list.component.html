@@ -1,14 +1,10 @@
-<div
-  fxFlex
-  fxLayout="row wrap"
-  fxLayout.lt-sm="column"
-  fxLayoutGap="10px grid"
-  fxLayoutAlign="start stretch"
->
+<div fxLayout="row wrap" fxLayoutGap="20px grid">
   <app-recipe-item
-    fxFlex.lg="1 1 25"
-    fxFlex.md="1 1 33.3"
-    fxFlex.lt-md="1 1 50"
+    fxFlex="100%"
+    fxFlex.gt-md="25%"
+    fxFlex.md="33.3%"
+    fxFlex.sm="50%"
+    fxLayoutAlign="stretch"
     *ngFor="let recipe of recipes"
     [recipe]="recipe"
   ></app-recipe-item>

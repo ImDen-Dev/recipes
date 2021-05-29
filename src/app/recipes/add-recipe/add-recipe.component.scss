@@ -1,0 +1,43 @@
+.form {
+  & h3 {
+    position: relative;
+    padding-left: 15px;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+
+    &:after {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #ffffff;
+    }
+  }
+  &_description {
+    & mat-form-field {
+      width: 100%;
+    }
+  }
+  &_ingredient {
+    width: 100%;
+    max-width: 600px;
+    &s {
+      margin-top: 20px;
+    }
+  }
+  &_instruction {
+    margin-top: 20px;
+    &-step {
+      & mat-form-field {
+        width: 100%;
+        max-width: 600px;
+      }
+    }
+  }
+  &_btn[type="submit"] {
+    display: block;
+    margin-left: auto;
+  }
+}

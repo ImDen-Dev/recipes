@@ -1,0 +1,109 @@
+<div class="add-recipe-header">
+  <h1>Добавить рецепт</h1>
+</div>
+<div class="add-recipe-form">
+  <form class="form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <div class="form_description">
+      <h3>Описание</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Описание</mat-label>
+        <textarea
+          matInput
+          name="description"
+          id="description"
+          formControlName="description"
+        ></textarea>
+        <mat-icon matPrefix color="primary">create</mat-icon>
+      </mat-form-field>
+    </div>
+    <div
+      class="form_info"
+      fxLayout="row"
+      fxFlexAlign="flex-start"
+      fxLayoutGap="20px"
+    >
+      <mat-form-field fxFlex="70px">
+        <mat-label>Время приготовления</mat-label>
+        <input type="number" matInput formControlName="time" required />
+        <mat-icon matSuffix>timer</mat-icon>
+      </mat-form-field>
+      <mat-form-field fxFlex="70px">
+        <mat-label>Количество порций</mat-label>
+        <input type="number" matInput formControlName="portions" required />
+        <mat-icon class="" matSuffix>outdoor_grill_outline</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="form_ingredients" formArrayName="ingredients">
+      <h3>Добавить ингредиенты:</h3>
+      <div
+        class="form_ingredient"
+        fxLayout="row"
+        fxLayoutAlign="flex-start center"
+        fxLayoutGap="20px"
+        *ngFor="let ingredient of ingredientsControls; index as i"
+        [formGroupName]="i"
+      >
+        <mat-form-field fxFlex="60">
+          <mat-label>Ингредиент</mat-label>
+          <input type="text" matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field fxFlex="10">
+          <mat-label>Кол.</mat-label>
+          <input type="number" matInput formControlName="amount" />
+        </mat-form-field>
+        <mat-form-field fxFlex="10">
+          <mat-label>Мера</mat-label>
+          <input type="text" matInput formControlName="measure" />
+        </mat-form-field>
+        <button
+          fxFlex="5"
+          type="button"
+          mat-icon-button
+          (click)="removeIngredientField(i)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <button
+        type="button"
+        mat-raised-button
+        (click)="addIngredientField()"
+        color="primary"
+      >
+        Добавить ингредиент
+      </button>
+    </div>
+    <div class="form_instruction" formArrayName="steps">
+      <h3>Пошаговая инструкция</h3>
+      <div
+        class="form_instruction-step"
+        *ngFor="let step of stepsControls; index as i"
+        [formGroupName]="i"
+      >
+        <mat-form-field>
+          <mat-label>Описание шага</mat-label>
+          <textarea type="text" matInput formControlName="stepName"></textarea>
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="removeStepField(i)"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="addStepField()"
+        >
+          Добавить инструкцию
+        </button>
+      </div>
+    </div>
+    <button class="form_btn" type="submit" mat-stroked-button color="accent">
+      Отправить
+    </button>
+  </form>
+</div>

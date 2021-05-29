@@ -1,11 +1,16 @@
 <app-header (openSidenav)="sidenav.toggle()"></app-header>
-<main>
+<div class="sidenav-wrapper">
   <mat-sidenav-container>
     <mat-sidenav role="navigation" #sidenav>
       <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <div class="inner-content">
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+        <app-footer></app-footer>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</main>
+</div>
