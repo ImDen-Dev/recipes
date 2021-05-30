@@ -48,6 +48,12 @@
 
   &_step {
     margin-bottom: 20px;
+    &-info {
+      list-style-type: armenian;
+    }
+    .step_num {
+      margin-right: 7px;
+    }
     &-img {
       width: 100%;
       max-width: 300px;
@@ -58,6 +64,7 @@
     }
     & p {
       padding: 0 20px 0 20px;
+      margin-bottom: 0;
     }
   }
 }

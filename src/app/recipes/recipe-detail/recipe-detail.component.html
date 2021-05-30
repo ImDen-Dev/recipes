@@ -36,16 +36,14 @@
   </div>
   <div class="recipe_steps">
     <h2>Инструкция приготовления</h2>
-
     <div
       class="recipe_step"
       fxLayout="row"
       fxLayoutAlign="start center"
-      fxLayout="row"
-      fxLayoutAlign="start center"
-      *ngFor="let step of recipe.steps"
+      *ngFor="let step of recipe.steps; index as i"
     >
-      <div class="recipe_step-img" *ngIf="step.image">
+      <span class="step_num">{{ i + 1 }}.</span>
+      <div class="recipe_step-img" fxFlex="30%" *ngIf="step.image">
         <img [src]="step.image" [alt]="step.text" />
       </div>
       <p>

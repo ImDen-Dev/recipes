@@ -1,28 +1,41 @@
-<mat-card class="mat-elevation-z4" (click)="goToRecipe(recipe.id!)">
-  <img
-    *ngIf="recipe.images.length > 0"
-    mat-card-image
-    [src]="recipe.images[0]"
-    [alt]="recipe.name"
-  />
-  <mat-card-header>
-    <mat-card-title fxFlex="1 1 100%">{{ recipe.name }}</mat-card-title>
+<mat-card
+  class="mat-elevation-z4"
+  (click)="goToRecipe(recipe.id!)"
+  fxLayout="column"
+>
+  <div fxFlex="1 1 0">
+    <img
+      *ngIf="recipe.images.length > 0"
+      mat-card-image
+      [src]="recipe.images[0]"
+      [alt]="recipe.name"
+    />
+  </div>
+  <mat-card-header fxFlex="1 1 0">
+    <mat-card-title>{{ recipe.name }}</mat-card-title>
   </mat-card-header>
 
-  <mat-card-content>
+  <mat-card-content fxFlex="1 1">
     <ul
       class="recipe-ingredients"
       fxLayout="row wrap"
       fxLayoutGap="10px"
-      fxLayoutAlign="flex-start"
+      fxLayoutAlign="flex-start center"
     >
       <li
-        class="recipe-ingredient"
+        class="recipe-ingredient mat-elevation-z4"
         *ngFor="let ingredient of recipe.ingredients"
       >
         {{ ingredient.name }}
       </li>
     </ul>
   </mat-card-content>
-  <mat-card-footer></mat-card-footer>
+  <mat-card-footer fxLayout="row" fxLayoutAlign="space-around center">
+    <p fxLayout="row" fxLayoutAlign="center end">
+      {{ recipe.time_for_preparing }} <mat-icon>timer</mat-icon>
+    </p>
+    <p fxLayout="row" fxLayoutAlign="center end">
+      {{ recipe.portions }} <mat-icon>outdoor_grill_outline</mat-icon>
+    </p>
+  </mat-card-footer>
 </mat-card>

@@ -21,6 +21,10 @@ mat-sidenav {
   overflow: auto;
 }
 
+mat-sidenav-content {
+  overflow-x: hidden;
+}
+
 .inner-content {
   display: flex;
   flex-direction: column;
